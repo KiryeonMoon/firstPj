@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lotto</title>
+    <!-- TODO 추첨 번호(.number) 스타일 작성 [feature/style]-->
+    <style>
+        .number {
+            display: inline-block;
+            background: #aaa;
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            line-height: 100px;
+            font-size: 64px;
+            text-align: center;
+            font-weight: bold;
+            overflow: hidden;
+        }
+        .numset {
+            text-align: center;
+            padding: 10px;
+        }        
+    </style>
+</head>
+
+<body>
+    <h1>로또번호 추첨기</h1>
+
+    <button onclick="genLottoHTML()">생성하기</button>
+    <div id="LOTTO"></div>
+    
+<script>
+var LOTTO = document.getElementById("LOTTO");
+// 랜덤 번호 생성 함수
+function genLottoNo(){
+    return Math.floor(Math.random()*45);
+}
+// 로또 번호 추첨 함수 
+function getLuckyNumber(){
+    var numbers = [];
+    while( numbers.length < 6 ) {
+        var newNumber = genLottoNo();
+        if( numbers.indexOf(newNumber)<0 ) { // 중복검사
+            numbers.push(newNumber);
+        }
+    }
+    return numbers;
+}
+function genLottoHTML(){
+    var numbers = getLuckyNumber();
+    var lottoHTML = '';
+    for (var i=0; i<5; i++) {
+        var numbers = getLuckyNumber();
+        while( checkLogic(numbers) ) numbers=getLuckyNumber();
+        lottoHTML += '<div class="numset"><span class="number">';
+        lottoHTML += numbers.join('</span> <span class="number">');
+        lottoHTML += '</span></div>';
+    }
+    LOTTO.innerHTML = lottoHTML;
+}    
+// 11,12,13과 같은 연속된 숫자가 3개이상 나오지 않도록 [testPR]
+function checkLogic(numbers) {
+    for(var i=0; i<numbers.length; i++){
+        var no = numbers[i];
+        if( numbers.indexOf(no+1)>=0 && numbers.indexOf(no+2)>=0 ) return true;
+    }
+    return false;
+}
+</script>
+</body>
+</html>
