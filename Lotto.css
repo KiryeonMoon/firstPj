@@ -4,6 +4,25 @@
   --color-text: white;
 }
 
+.number {
+  display: inline-block;
+  background: #aaa;
+  color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  line-height: 100px;
+  font-size: 64px;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.numset {
+  text-align: center;
+  padding: 10px;
+}
+
 body {
   background-color: gray;
   margin: 0px;
