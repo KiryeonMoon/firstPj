@@ -1,0 +1,60 @@
+:root {
+  --color-text: white;
+  --color-background: black;
+}
+
+body {
+  margin: 0px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding: 4px;
+}
+
+.navbar__logo {
+  padding: 8px 12px;
+}
+
+.navbar__logo i {
+  font-size: 24px;
+  color: red;
+}
+
+.navbar__icons {
+  padding: 8px 12px;
+}
+
+.navbar__icons i {
+  padding: 4px;
+}
+
+.video__content {
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons li {
+  list-style: none;
+}
+
+.user__data {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.user__data ul {
+  padding-left: 4px;
+}
+
+.user__data li {
+  list-style: none;
+}
